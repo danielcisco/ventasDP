@@ -46,10 +46,10 @@
             this.tabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnImprimir = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnBuscar = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnEliminar = new MaterialSkin.Controls.MaterialFlatButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.TabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.btnBuscar = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -63,7 +63,7 @@
             this.lblTotal.Depth = 0;
             this.lblTotal.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(437, 189);
+            this.lblTotal.Location = new System.Drawing.Point(420, 51);
             this.lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(74, 24);
@@ -74,14 +74,15 @@
             // 
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.Depth = 0;
+            this.chkEliminar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.chkEliminar.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chkEliminar.Location = new System.Drawing.Point(5, 187);
+            this.chkEliminar.Location = new System.Drawing.Point(3, 190);
             this.chkEliminar.Margin = new System.Windows.Forms.Padding(0);
             this.chkEliminar.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chkEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Ripple = true;
-            this.chkEliminar.Size = new System.Drawing.Size(94, 30);
+            this.chkEliminar.Size = new System.Drawing.Size(636, 30);
             this.chkEliminar.TabIndex = 9;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
@@ -91,14 +92,14 @@
             // 
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Hint = "";
-            this.txtBuscar.Location = new System.Drawing.Point(212, 46);
+            this.txtBuscar.Location = new System.Drawing.Point(140, 47);
             this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.SelectionLength = 0;
             this.txtBuscar.SelectionStart = 0;
-            this.txtBuscar.Size = new System.Drawing.Size(193, 28);
+            this.txtBuscar.Size = new System.Drawing.Size(274, 28);
             this.txtBuscar.TabIndex = 8;
             this.txtBuscar.Text = "Categoria a Buscar";
             this.txtBuscar.UseSystemPasswordChar = false;
@@ -203,14 +204,14 @@
             // 
             this.txtDescripcion.Depth = 0;
             this.txtDescripcion.Hint = "";
-            this.txtDescripcion.Location = new System.Drawing.Point(198, 178);
+            this.txtDescripcion.Location = new System.Drawing.Point(125, 178);
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasswordChar = '\0';
             this.txtDescripcion.SelectedText = "";
             this.txtDescripcion.SelectionLength = 0;
             this.txtDescripcion.SelectionStart = 0;
-            this.txtDescripcion.Size = new System.Drawing.Size(215, 28);
+            this.txtDescripcion.Size = new System.Drawing.Size(388, 28);
             this.txtDescripcion.TabIndex = 9;
             this.txtDescripcion.Text = "Descripcion";
             this.txtDescripcion.UseSystemPasswordChar = false;
@@ -221,14 +222,14 @@
             // 
             this.txtNombre.Depth = 0;
             this.txtNombre.Hint = "";
-            this.txtNombre.Location = new System.Drawing.Point(198, 124);
+            this.txtNombre.Location = new System.Drawing.Point(125, 124);
             this.txtNombre.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
             this.txtNombre.SelectedText = "";
             this.txtNombre.SelectionLength = 0;
             this.txtNombre.SelectionStart = 0;
-            this.txtNombre.Size = new System.Drawing.Size(215, 28);
+            this.txtNombre.Size = new System.Drawing.Size(388, 28);
             this.txtNombre.TabIndex = 8;
             this.txtNombre.Text = "Nombre de Categoria";
             this.txtNombre.UseSystemPasswordChar = false;
@@ -239,14 +240,14 @@
             // 
             this.txtIdcategoria.Depth = 0;
             this.txtIdcategoria.Hint = "";
-            this.txtIdcategoria.Location = new System.Drawing.Point(198, 78);
+            this.txtIdcategoria.Location = new System.Drawing.Point(125, 78);
             this.txtIdcategoria.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtIdcategoria.Name = "txtIdcategoria";
             this.txtIdcategoria.PasswordChar = '\0';
             this.txtIdcategoria.SelectedText = "";
             this.txtIdcategoria.SelectionLength = 0;
             this.txtIdcategoria.SelectionStart = 0;
-            this.txtIdcategoria.Size = new System.Drawing.Size(215, 28);
+            this.txtIdcategoria.Size = new System.Drawing.Size(388, 28);
             this.txtIdcategoria.TabIndex = 7;
             this.txtIdcategoria.Text = "Codigo de Categoria";
             this.txtIdcategoria.UseSystemPasswordChar = false;
@@ -308,6 +309,23 @@
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.AutoSize = true;
+            this.btnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnBuscar.Depth = 0;
+            this.btnBuscar.Location = new System.Drawing.Point(140, 103);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Primary = false;
+            this.btnBuscar.Size = new System.Drawing.Size(79, 36);
+            this.btnBuscar.TabIndex = 14;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.AutoSize = true;
@@ -353,23 +371,6 @@
             this.TabSelector1.Size = new System.Drawing.Size(650, 30);
             this.TabSelector1.TabIndex = 3;
             this.TabSelector1.Text = "materialTabSelector1";
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.AutoSize = true;
-            this.btnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnBuscar.Depth = 0;
-            this.btnBuscar.Location = new System.Drawing.Point(140, 103);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Primary = false;
-            this.btnBuscar.Size = new System.Drawing.Size(79, 36);
-            this.btnBuscar.TabIndex = 14;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // FrmCategoria
             // 

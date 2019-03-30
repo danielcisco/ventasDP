@@ -325,14 +325,14 @@
             this.btnAtras.AutoSize = true;
             this.btnAtras.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAtras.Depth = 0;
-            this.btnAtras.Location = new System.Drawing.Point(34, 497);
+            this.btnAtras.Location = new System.Drawing.Point(9, 514);
             this.btnAtras.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAtras.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Primary = false;
-            this.btnAtras.Size = new System.Drawing.Size(57, 36);
+            this.btnAtras.Size = new System.Drawing.Size(109, 36);
             this.btnAtras.TabIndex = 32;
-            this.btnAtras.Text = "back";
+            this.btnAtras.Text = "[     back     ]";
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 

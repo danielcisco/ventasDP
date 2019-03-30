@@ -101,7 +101,7 @@
             this.btnImprimir.AutoSize = true;
             this.btnImprimir.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnImprimir.Depth = 0;
-            this.btnImprimir.Location = new System.Drawing.Point(168, 132);
+            this.btnImprimir.Location = new System.Drawing.Point(404, 87);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnImprimir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnImprimir.Name = "btnImprimir";
@@ -117,7 +117,7 @@
             this.btnEliminar.AutoSize = true;
             this.btnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEliminar.Depth = 0;
-            this.btnEliminar.Location = new System.Drawing.Point(168, 98);
+            this.btnEliminar.Location = new System.Drawing.Point(262, 87);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";
@@ -133,7 +133,7 @@
             this.btnBuscar.AutoSize = true;
             this.btnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBuscar.Depth = 0;
-            this.btnBuscar.Location = new System.Drawing.Point(168, 60);
+            this.btnBuscar.Location = new System.Drawing.Point(132, 87);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnBuscar.Name = "btnBuscar";
@@ -148,14 +148,14 @@
             // 
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Hint = "";
-            this.txtBuscar.Location = new System.Drawing.Point(167, 26);
+            this.txtBuscar.Location = new System.Drawing.Point(64, 26);
             this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.SelectionLength = 0;
             this.txtBuscar.SelectionStart = 0;
-            this.txtBuscar.Size = new System.Drawing.Size(273, 28);
+            this.txtBuscar.Size = new System.Drawing.Size(362, 28);
             this.txtBuscar.TabIndex = 18;
             this.txtBuscar.Text = "Presentacion a Buscar";
             this.txtBuscar.UseSystemPasswordChar = false;
@@ -169,7 +169,7 @@
             this.lblTotal.Depth = 0;
             this.lblTotal.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(504, 178);
+            this.lblTotal.Location = new System.Drawing.Point(456, 30);
             this.lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(74, 24);
@@ -180,14 +180,15 @@
             // 
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.Depth = 0;
+            this.chkEliminar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.chkEliminar.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chkEliminar.Location = new System.Drawing.Point(5, 176);
+            this.chkEliminar.Location = new System.Drawing.Point(3, 193);
             this.chkEliminar.Margin = new System.Windows.Forms.Padding(0);
             this.chkEliminar.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chkEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Ripple = true;
-            this.chkEliminar.Size = new System.Drawing.Size(94, 30);
+            this.chkEliminar.Size = new System.Drawing.Size(636, 30);
             this.chkEliminar.TabIndex = 16;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
@@ -243,7 +244,7 @@
             // 
             this.txtDescripcion.Depth = 0;
             this.txtDescripcion.Hint = "";
-            this.txtDescripcion.Location = new System.Drawing.Point(113, 119);
+            this.txtDescripcion.Location = new System.Drawing.Point(113, 143);
             this.txtDescripcion.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasswordChar = '\0';
@@ -261,7 +262,7 @@
             // 
             this.txtNombre.Depth = 0;
             this.txtNombre.Hint = "";
-            this.txtNombre.Location = new System.Drawing.Point(113, 76);
+            this.txtNombre.Location = new System.Drawing.Point(113, 100);
             this.txtNombre.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
@@ -280,7 +281,7 @@
             this.btnCancelar.AutoSize = true;
             this.btnCancelar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCancelar.Depth = 0;
-            this.btnCancelar.Location = new System.Drawing.Point(113, 315);
+            this.btnCancelar.Location = new System.Drawing.Point(473, 279);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
@@ -296,7 +297,7 @@
             this.btnEditar.AutoSize = true;
             this.btnEditar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEditar.Depth = 0;
-            this.btnEditar.Location = new System.Drawing.Point(113, 264);
+            this.btnEditar.Location = new System.Drawing.Point(356, 279);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditar.Name = "btnEditar";
@@ -312,7 +313,7 @@
             this.btnGuardar.AutoSize = true;
             this.btnGuardar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnGuardar.Depth = 0;
-            this.btnGuardar.Location = new System.Drawing.Point(113, 213);
+            this.btnGuardar.Location = new System.Drawing.Point(228, 279);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnGuardar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGuardar.Name = "btnGuardar";
@@ -328,7 +329,7 @@
             this.btnNuevo.AutoSize = true;
             this.btnNuevo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNuevo.Depth = 0;
-            this.btnNuevo.Location = new System.Drawing.Point(113, 162);
+            this.btnNuevo.Location = new System.Drawing.Point(113, 279);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNuevo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevo.Name = "btnNuevo";

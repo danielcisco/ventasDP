@@ -33,7 +33,6 @@
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataListado = new System.Windows.Forms.DataGridView();
-            this.cbBuscar = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnImprimir = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -45,10 +44,12 @@
             this.rbDocumento = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbRazonSocial = new MaterialSkin.Controls.MaterialRadioButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.gbtipo_documento = new System.Windows.Forms.GroupBox();
+            this.rbOtro = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbNit = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbPasaporte = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbCi = new MaterialSkin.Controls.MaterialRadioButton();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtIdproveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -62,12 +63,12 @@
             this.btnNuevo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cbSector_Comercial = new System.Windows.Forms.ComboBox();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.rbOtro = new MaterialSkin.Controls.MaterialRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.gbtipo_documento.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorIcono
@@ -96,7 +97,7 @@
             this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar});
             this.dataListado.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataListado.Location = new System.Drawing.Point(3, 333);
+            this.dataListado.Location = new System.Drawing.Point(3, 369);
             this.dataListado.MultiSelect = false;
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
@@ -106,18 +107,6 @@
             this.dataListado.TabIndex = 7;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
-            // 
-            // cbBuscar
-            // 
-            this.cbBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.cbBuscar.FormattingEnabled = true;
-            this.cbBuscar.Items.AddRange(new object[] {
-            "Documento",
-            "Razon Social"});
-            this.cbBuscar.Location = new System.Drawing.Point(68, 33);
-            this.cbBuscar.Name = "cbBuscar";
-            this.cbBuscar.Size = new System.Drawing.Size(216, 26);
-            this.cbBuscar.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -129,7 +118,7 @@
             this.tabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(684, 586);
+            this.tabControl1.Size = new System.Drawing.Size(684, 622);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage3
@@ -144,11 +133,10 @@
             this.tabPage3.Controls.Add(this.rbDocumento);
             this.tabPage3.Controls.Add(this.rbRazonSocial);
             this.tabPage3.Controls.Add(this.dataListado);
-            this.tabPage3.Controls.Add(this.cbBuscar);
             this.tabPage3.Location = new System.Drawing.Point(4, 27);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(676, 555);
+            this.tabPage3.Size = new System.Drawing.Size(676, 591);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Listado";
             // 
@@ -163,6 +151,7 @@
             this.btnImprimir.TabIndex = 15;
             this.btnImprimir.Text = "imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnEliminar
             // 
@@ -175,6 +164,7 @@
             this.btnEliminar.TabIndex = 14;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnBuscar
             // 
@@ -195,7 +185,7 @@
             this.lblTotal.Depth = 0;
             this.lblTotal.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(301, 285);
+            this.lblTotal.Location = new System.Drawing.Point(447, 73);
             this.lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(74, 24);
@@ -208,7 +198,7 @@
             this.chkEliminar.Depth = 0;
             this.chkEliminar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.chkEliminar.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chkEliminar.Location = new System.Drawing.Point(3, 303);
+            this.chkEliminar.Location = new System.Drawing.Point(3, 339);
             this.chkEliminar.Margin = new System.Windows.Forms.Padding(0);
             this.chkEliminar.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chkEliminar.MouseState = MaterialSkin.MouseState.HOVER;
@@ -223,24 +213,26 @@
             // 
             this.txtBuscar.Depth = 0;
             this.txtBuscar.Hint = "";
-            this.txtBuscar.Location = new System.Drawing.Point(305, 32);
+            this.txtBuscar.Location = new System.Drawing.Point(285, 32);
             this.txtBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.SelectedText = "";
             this.txtBuscar.SelectionLength = 0;
             this.txtBuscar.SelectionStart = 0;
-            this.txtBuscar.Size = new System.Drawing.Size(303, 28);
+            this.txtBuscar.Size = new System.Drawing.Size(323, 28);
             this.txtBuscar.TabIndex = 10;
             this.txtBuscar.Text = "Proveedor a Buscar";
             this.txtBuscar.UseSystemPasswordChar = false;
+            this.txtBuscar.Enter += new System.EventHandler(this.txtBuscar_Enter);
+            this.txtBuscar.Leave += new System.EventHandler(this.txtBuscar_Leave);
             // 
             // rbDocumento
             // 
             this.rbDocumento.AutoSize = true;
             this.rbDocumento.Depth = 0;
             this.rbDocumento.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbDocumento.Location = new System.Drawing.Point(215, 70);
+            this.rbDocumento.Location = new System.Drawing.Point(109, 67);
             this.rbDocumento.Margin = new System.Windows.Forms.Padding(0);
             this.rbDocumento.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbDocumento.MouseState = MaterialSkin.MouseState.HOVER;
@@ -257,7 +249,7 @@
             this.rbRazonSocial.AutoSize = true;
             this.rbRazonSocial.Depth = 0;
             this.rbRazonSocial.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbRazonSocial.Location = new System.Drawing.Point(68, 70);
+            this.rbRazonSocial.Location = new System.Drawing.Point(109, 30);
             this.rbRazonSocial.Margin = new System.Windows.Forms.Padding(0);
             this.rbRazonSocial.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbRazonSocial.MouseState = MaterialSkin.MouseState.HOVER;
@@ -272,11 +264,8 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.White;
-            this.tabPage4.Controls.Add(this.rbOtro);
+            this.tabPage4.Controls.Add(this.gbtipo_documento);
             this.tabPage4.Controls.Add(this.materialRaisedButton1);
-            this.tabPage4.Controls.Add(this.rbNit);
-            this.tabPage4.Controls.Add(this.rbPasaporte);
-            this.tabPage4.Controls.Add(this.rbCi);
             this.tabPage4.Controls.Add(this.txtIdproveedor);
             this.tabPage4.Controls.Add(this.txtUrl);
             this.tabPage4.Controls.Add(this.txtEmail);
@@ -292,29 +281,46 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 27);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(676, 555);
+            this.tabPage4.Size = new System.Drawing.Size(676, 591);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Mantenimiento";
             // 
-            // materialRaisedButton1
+            // gbtipo_documento
             // 
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(52, 497);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(574, 39);
-            this.materialRaisedButton1.TabIndex = 55;
-            this.materialRaisedButton1.Text = "back";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.gbtipo_documento.Controls.Add(this.rbOtro);
+            this.gbtipo_documento.Controls.Add(this.rbNit);
+            this.gbtipo_documento.Controls.Add(this.rbPasaporte);
+            this.gbtipo_documento.Controls.Add(this.rbCi);
+            this.gbtipo_documento.Location = new System.Drawing.Point(67, 63);
+            this.gbtipo_documento.Name = "gbtipo_documento";
+            this.gbtipo_documento.Size = new System.Drawing.Size(546, 59);
+            this.gbtipo_documento.TabIndex = 57;
+            this.gbtipo_documento.TabStop = false;
+            // 
+            // rbOtro
+            // 
+            this.rbOtro.AutoSize = true;
+            this.rbOtro.Depth = 0;
+            this.rbOtro.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbOtro.Location = new System.Drawing.Point(449, 18);
+            this.rbOtro.Margin = new System.Windows.Forms.Padding(0);
+            this.rbOtro.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbOtro.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbOtro.Name = "rbOtro";
+            this.rbOtro.Ripple = true;
+            this.rbOtro.Size = new System.Drawing.Size(63, 30);
+            this.rbOtro.TabIndex = 56;
+            this.rbOtro.TabStop = true;
+            this.rbOtro.Text = "Otro";
+            this.rbOtro.UseVisualStyleBackColor = true;
+            this.rbOtro.CheckedChanged += new System.EventHandler(this.rbOtro_CheckedChanged);
             // 
             // rbNit
             // 
             this.rbNit.AutoSize = true;
             this.rbNit.Depth = 0;
             this.rbNit.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbNit.Location = new System.Drawing.Point(393, 76);
+            this.rbNit.Location = new System.Drawing.Point(317, 18);
             this.rbNit.Margin = new System.Windows.Forms.Padding(0);
             this.rbNit.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbNit.MouseState = MaterialSkin.MouseState.HOVER;
@@ -332,7 +338,7 @@
             this.rbPasaporte.AutoSize = true;
             this.rbPasaporte.Depth = 0;
             this.rbPasaporte.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbPasaporte.Location = new System.Drawing.Point(210, 76);
+            this.rbPasaporte.Location = new System.Drawing.Point(134, 18);
             this.rbPasaporte.Margin = new System.Windows.Forms.Padding(0);
             this.rbPasaporte.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbPasaporte.MouseState = MaterialSkin.MouseState.HOVER;
@@ -350,7 +356,7 @@
             this.rbCi.AutoSize = true;
             this.rbCi.Depth = 0;
             this.rbCi.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbCi.Location = new System.Drawing.Point(80, 76);
+            this.rbCi.Location = new System.Drawing.Point(4, 18);
             this.rbCi.Margin = new System.Windows.Forms.Padding(0);
             this.rbCi.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rbCi.MouseState = MaterialSkin.MouseState.HOVER;
@@ -362,6 +368,19 @@
             this.rbCi.Text = "C.I.";
             this.rbCi.UseVisualStyleBackColor = true;
             this.rbCi.CheckedChanged += new System.EventHandler(this.rbCi_CheckedChanged);
+            // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(53, 531);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(574, 39);
+            this.materialRaisedButton1.TabIndex = 55;
+            this.materialRaisedButton1.Text = "back";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
             // txtIdproveedor
             // 
@@ -384,7 +403,7 @@
             // 
             this.txtUrl.Depth = 0;
             this.txtUrl.Hint = "";
-            this.txtUrl.Location = new System.Drawing.Point(80, 357);
+            this.txtUrl.Location = new System.Drawing.Point(80, 374);
             this.txtUrl.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.PasswordChar = '\0';
@@ -393,14 +412,16 @@
             this.txtUrl.SelectionStart = 0;
             this.txtUrl.Size = new System.Drawing.Size(508, 28);
             this.txtUrl.TabIndex = 50;
-            this.txtUrl.Text = "txtUrl";
+            this.txtUrl.Text = "Url";
             this.txtUrl.UseSystemPasswordChar = false;
+            this.txtUrl.Enter += new System.EventHandler(this.txtUrl_Enter);
+            this.txtUrl.Leave += new System.EventHandler(this.txtUrl_Leave);
             // 
             // txtEmail
             // 
             this.txtEmail.Depth = 0;
             this.txtEmail.Hint = "";
-            this.txtEmail.Location = new System.Drawing.Point(80, 310);
+            this.txtEmail.Location = new System.Drawing.Point(80, 327);
             this.txtEmail.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -409,14 +430,16 @@
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.Size = new System.Drawing.Size(508, 28);
             this.txtEmail.TabIndex = 49;
-            this.txtEmail.Text = "txtEmail";
+            this.txtEmail.Text = "Email";
             this.txtEmail.UseSystemPasswordChar = false;
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtTelefono
             // 
             this.txtTelefono.Depth = 0;
             this.txtTelefono.Hint = "";
-            this.txtTelefono.Location = new System.Drawing.Point(80, 263);
+            this.txtTelefono.Location = new System.Drawing.Point(80, 280);
             this.txtTelefono.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PasswordChar = '\0';
@@ -425,14 +448,16 @@
             this.txtTelefono.SelectionStart = 0;
             this.txtTelefono.Size = new System.Drawing.Size(508, 28);
             this.txtTelefono.TabIndex = 48;
-            this.txtTelefono.Text = "txtTelefono";
+            this.txtTelefono.Text = "Telefono";
             this.txtTelefono.UseSystemPasswordChar = false;
+            this.txtTelefono.Enter += new System.EventHandler(this.txtTelefono_Enter);
+            this.txtTelefono.Leave += new System.EventHandler(this.txtTelefono_Leave);
             // 
             // txtDireccion
             // 
             this.txtDireccion.Depth = 0;
             this.txtDireccion.Hint = "";
-            this.txtDireccion.Location = new System.Drawing.Point(80, 216);
+            this.txtDireccion.Location = new System.Drawing.Point(80, 233);
             this.txtDireccion.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.PasswordChar = '\0';
@@ -441,14 +466,16 @@
             this.txtDireccion.SelectionStart = 0;
             this.txtDireccion.Size = new System.Drawing.Size(508, 28);
             this.txtDireccion.TabIndex = 47;
-            this.txtDireccion.Text = "txtDireccion";
+            this.txtDireccion.Text = "Direccion";
             this.txtDireccion.UseSystemPasswordChar = false;
+            this.txtDireccion.Enter += new System.EventHandler(this.txtDireccion_Enter);
+            this.txtDireccion.Leave += new System.EventHandler(this.txtDireccion_Leave);
             // 
             // txtNum_Documento
             // 
             this.txtNum_Documento.Depth = 0;
             this.txtNum_Documento.Hint = "";
-            this.txtNum_Documento.Location = new System.Drawing.Point(80, 124);
+            this.txtNum_Documento.Location = new System.Drawing.Point(80, 141);
             this.txtNum_Documento.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtNum_Documento.Name = "txtNum_Documento";
             this.txtNum_Documento.PasswordChar = '\0';
@@ -457,8 +484,10 @@
             this.txtNum_Documento.SelectionStart = 0;
             this.txtNum_Documento.Size = new System.Drawing.Size(508, 28);
             this.txtNum_Documento.TabIndex = 46;
-            this.txtNum_Documento.Text = "txtNum_Documento";
+            this.txtNum_Documento.Text = "Numero de Documento";
             this.txtNum_Documento.UseSystemPasswordChar = false;
+            this.txtNum_Documento.Enter += new System.EventHandler(this.txtNum_Documento_Enter);
+            this.txtNum_Documento.Leave += new System.EventHandler(this.txtNum_Documento_Leave);
             // 
             // txtRazon_Social
             // 
@@ -473,13 +502,15 @@
             this.txtRazon_Social.SelectionStart = 0;
             this.txtRazon_Social.Size = new System.Drawing.Size(508, 28);
             this.txtRazon_Social.TabIndex = 45;
-            this.txtRazon_Social.Text = "txtRazon_Social";
+            this.txtRazon_Social.Text = "Razon Social";
             this.txtRazon_Social.UseSystemPasswordChar = false;
+            this.txtRazon_Social.Enter += new System.EventHandler(this.txtRazon_Social_Enter);
+            this.txtRazon_Social.Leave += new System.EventHandler(this.txtRazon_Social_Leave);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Depth = 0;
-            this.btnCancelar.Location = new System.Drawing.Point(347, 452);
+            this.btnCancelar.Location = new System.Drawing.Point(348, 486);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Primary = true;
@@ -487,11 +518,12 @@
             this.btnCancelar.TabIndex = 44;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnEditar
             // 
             this.btnEditar.Depth = 0;
-            this.btnEditar.Location = new System.Drawing.Point(347, 407);
+            this.btnEditar.Location = new System.Drawing.Point(348, 441);
             this.btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Primary = true;
@@ -499,11 +531,12 @@
             this.btnEditar.TabIndex = 43;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Depth = 0;
-            this.btnGuardar.Location = new System.Drawing.Point(52, 452);
+            this.btnGuardar.Location = new System.Drawing.Point(53, 486);
             this.btnGuardar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Primary = true;
@@ -516,7 +549,7 @@
             // btnNuevo
             // 
             this.btnNuevo.Depth = 0;
-            this.btnNuevo.Location = new System.Drawing.Point(52, 407);
+            this.btnNuevo.Location = new System.Drawing.Point(53, 441);
             this.btnNuevo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Primary = true;
@@ -524,6 +557,7 @@
             this.btnNuevo.TabIndex = 41;
             this.btnNuevo.Text = "nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // cbSector_Comercial
             // 
@@ -538,11 +572,11 @@
             "VICTORIA’S SECRET",
             "Loreal",
             "Otro"});
-            this.cbSector_Comercial.Location = new System.Drawing.Point(80, 171);
+            this.cbSector_Comercial.Location = new System.Drawing.Point(80, 188);
             this.cbSector_Comercial.Name = "cbSector_Comercial";
             this.cbSector_Comercial.Size = new System.Drawing.Size(508, 26);
             this.cbSector_Comercial.TabIndex = 24;
-            this.cbSector_Comercial.Text = "Sector";
+            this.cbSector_Comercial.Text = "Sector Comercial";
             // 
             // materialTabSelector1
             // 
@@ -556,33 +590,16 @@
             this.materialTabSelector1.TabIndex = 6;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // rbOtro
-            // 
-            this.rbOtro.AutoSize = true;
-            this.rbOtro.Depth = 0;
-            this.rbOtro.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rbOtro.Location = new System.Drawing.Point(525, 76);
-            this.rbOtro.Margin = new System.Windows.Forms.Padding(0);
-            this.rbOtro.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.rbOtro.MouseState = MaterialSkin.MouseState.HOVER;
-            this.rbOtro.Name = "rbOtro";
-            this.rbOtro.Ripple = true;
-            this.rbOtro.Size = new System.Drawing.Size(63, 30);
-            this.rbOtro.TabIndex = 56;
-            this.rbOtro.TabStop = true;
-            this.rbOtro.Text = "Otro";
-            this.rbOtro.UseVisualStyleBackColor = true;
-            this.rbOtro.CheckedChanged += new System.EventHandler(this.rbOtro_CheckedChanged);
-            // 
             // frmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.ClientSize = new System.Drawing.Size(684, 700);
+            this.ClientSize = new System.Drawing.Size(684, 736);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Lato", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
             this.Name = "frmProveedor";
             this.Text = "Proveedores";
             this.TopMost = true;
@@ -593,7 +610,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
+            this.gbtipo_documento.ResumeLayout(false);
+            this.gbtipo_documento.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -603,7 +621,6 @@
         private System.Windows.Forms.DataGridView dataListado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.ToolTip ttMensaje;
-        private System.Windows.Forms.ComboBox cbBuscar;
         private MaterialSkin.Controls.MaterialTabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
@@ -633,5 +650,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnNuevo;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
         private MaterialSkin.Controls.MaterialRadioButton rbOtro;
+        private System.Windows.Forms.GroupBox gbtipo_documento;
     }
 }

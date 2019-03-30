@@ -8,16 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace CapaPresentacion
 {
-    public partial class frmCliente : Form
+    public partial class frmCliente : MaterialForm
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
+        private string sexo;
+        private string tipo_documento;
         public frmCliente()
         {
             InitializeComponent();
+            MaterialSkinManager m = MaterialSkinManager.Instance;
+            m.AddFormToManage(this);
+            m.Theme = MaterialSkinManager.Themes.DARK;
+            m.ColorScheme = new ColorScheme(Primary.Green900, Primary.Green700, Primary.Green500, Accent.LightGreen200, TextShade.WHITE);
+
+
+
+
             this.ttMensaje.SetToolTip(this.txtNombre, "Ingrese el nombre del Cliente");
             this.ttMensaje.SetToolTip(this.txtApellidos, "Ingrese los Apellidos del Cliente");
             this.ttMensaje.SetToolTip(this.txtDireccion, "Ingrese la dirección del Cliente");
@@ -42,27 +54,37 @@ namespace CapaPresentacion
         //Limpiar todos los controles del formulario
         private void Limpiar()
         {
-            this.txtNombre.Text = string.Empty;
-            this.txtApellidos.Text = string.Empty;
-            this.txtNum_Documento.Text = string.Empty;
-            this.txtDireccion.Text = string.Empty;
-            this.txtTelefono.Text = string.Empty;
-            this.txtEmail.Text = string.Empty;
+            this.txtNombre.Text = "Nombre";
+            this.txtApellidos.Text = "Apellidos";
+            this.txtNum_Documento.Text = "Numero de Documento";
+            this.txtDireccion.Text = "Direccion";
+            this.txtTelefono.Text = "Telefono";
+            this.txtEmail.Text = "Email";
             this.txtIdcliente.Text = string.Empty;
+            this.rbFemenino.Checked = false;
+            this.rbMasculino.Checked = false;
+            this.rbCi.Checked = false;
+            this.rbDni.Checked = false;
+            this.rbPasaporte.Checked = false;
+            this.rbOtro.Checked = false;
+            
 
         }
 
         //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
-            this.txtNombre.ReadOnly = !valor;
-            this.txtApellidos.ReadOnly = !valor;
-            this.txtDireccion.ReadOnly = !valor;
-            this.cbTipo_Documento.Enabled = valor;
-            this.txtNum_Documento.ReadOnly = !valor;
-            this.txtTelefono.ReadOnly = !valor;
-            this.txtEmail.ReadOnly = !valor;
-            this.txtIdcliente.ReadOnly = !valor;
+            this.txtNombre.Enabled = valor;
+            this.txtApellidos.Enabled = valor;
+            this.txtDireccion.Enabled = valor;
+            this.txtNum_Documento.Enabled = valor;
+            this.txtTelefono.Enabled = valor;
+            this.txtEmail.Enabled = valor;
+            this.txtIdcliente.Enabled = valor;
+            this.dtFechaNac.Enabled = valor;
+            this.gbGenero.Enabled = valor;
+            this.gbTipo_Documento.Enabled = valor;
+            this.lbldtfecha_nac.Enabled = valor;
         }
 
         //Habilitar los botones
@@ -130,11 +152,11 @@ namespace CapaPresentacion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (cbBuscar.Text.Equals("Apellidos"))
+            if (rbApellidos.Checked)
             {
                 this.BuscarApellidos();
             }
-            else if (cbBuscar.Text.Equals("Documento"))
+            else if (rbDocumento.Checked)
             {
                 this.BuscarNum_Documento();
             }
@@ -206,9 +228,45 @@ namespace CapaPresentacion
             this.txtIdcliente.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcliente"].Value);
             this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
             this.txtApellidos.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["apellidos"].Value);
-            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sexo"].Value);
+            //this.rbHombre.Checked = Convert.ToString(this.dataListado.CurrentRow.Cells["sexo"].Value);
+            this.rbMasculino.Checked = this.dataListado.CurrentRow.Cells["sexo"].Equals("M");
+            this.rbFemenino.Checked = !this.rbMasculino.Checked;
+
+
+            if (this.dataListado.CurrentRow.Cells["sexo"].Value.Equals("F"))
+                rbFemenino.Checked = true;
+            else
+                rbFemenino.Checked = false;
+
+            if (this.dataListado.CurrentRow.Cells["sexo"].Value.Equals("M"))
+                rbMasculino.Checked = true;
+            else
+                rbMasculino.Checked = false;
+
+
             this.dtFechaNac.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
-            this.cbTipo_Documento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_documento"].Value);
+            //this.cbTipo_Documento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_documento"].Value);
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("C.I."))
+                rbCi.Checked = true;
+            else
+                rbCi.Checked = false;
+
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("D.N.I."))
+                rbDni.Checked = true;
+            else
+                rbDni.Checked = false;
+
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("Pasaporte"))
+                rbPasaporte.Checked = true;
+            else
+                rbPasaporte.Checked = false;
+
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("Otro"))
+                rbOtro.Checked = true;
+            else
+                rbOtro.Checked = false;
+
+            
             this.txtNum_Documento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["num_documento"].Value);
             this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["direccion"].Value);
             this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["telefono"].Value);
@@ -218,6 +276,7 @@ namespace CapaPresentacion
 
         }
 
+      
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             this.IsNuevo = true;
@@ -233,9 +292,9 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtNombre.Text == string.Empty || this.txtApellidos.Text == string.Empty ||  
-                    this.txtNum_Documento.Text == string.Empty
-                    || this.txtDireccion.Text == string.Empty)
+                if (this.txtNombre.Text == "´Nombre" || this.txtApellidos.Text == "Apellidos" ||  
+                    this.txtNum_Documento.Text == "´Tipo de Documento"
+                    || this.txtDireccion.Text == "´Direccion")
                 {
                     MensajeError("Falta ingresar algunos datos, serán remarcados");
                     errorIcono.SetError(txtNombre, "Ingrese un Valor");
@@ -249,7 +308,7 @@ namespace CapaPresentacion
                     {
                         rpta = NCliente.Insertar(this.txtNombre.Text.Trim().ToUpper(),
                             this.txtApellidos.Text.Trim().ToUpper(),
-                            this.cbSexo.Text, dtFechaNac.Value, cbTipo_Documento.Text,
+                            this.sexo, dtFechaNac.Value, this.tipo_documento,
                             txtNum_Documento.Text, txtDireccion.Text, txtTelefono.Text,
                             txtEmail.Text);
 
@@ -259,7 +318,7 @@ namespace CapaPresentacion
                         rpta = NCliente.Editar(Convert.ToInt32(this.txtIdcliente.Text),
                             this.txtNombre.Text.Trim().ToUpper(),
                             this.txtApellidos.Text.Trim().ToUpper(),
-                            this.cbSexo.Text, dtFechaNac.Value, cbTipo_Documento.Text,
+                            this.sexo, dtFechaNac.Value, this.tipo_documento,
                             txtNum_Documento.Text, txtDireccion.Text, txtTelefono.Text,
                             txtEmail.Text);
                     }
@@ -269,10 +328,12 @@ namespace CapaPresentacion
                         if (this.IsNuevo)
                         {
                             this.MensajeOk("Se Insertó de forma correcta el registro");
-                        }
+                            
+;                        }
                         else
                         {
                             this.MensajeOk("Se Actualizó de forma correcta el registro");
+                          
                         }
                     }
                     else
@@ -335,6 +396,168 @@ namespace CapaPresentacion
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();   
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = tabPage3;
+        }
+
+        private void rbMasculino_CheckedChanged(object sender, EventArgs e)
+        {
+            this.sexo = "M";
+        }
+
+        private void rbFemenino_CheckedChanged(object sender, EventArgs e)
+        {
+            this.sexo = "F";
+        }
+
+        private void rbCi_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tipo_documento = "C.I.";
+        }
+
+        private void rbDni_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tipo_documento = "D.N.I.";
+        }
+
+        private void rbPasaporte_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tipo_documento = "Pasaporte";
+        }
+
+        private void rbOtro_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tipo_documento = "Otro";
+        }
+
+        private void txtNombre_Enter(object sender, EventArgs e)
+        {
+            if (txtNombre.Text == "Nombre")
+            {
+                txtNombre.Text = "";
+                txtNombre.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            if (txtNombre.Text == "")
+            {
+                txtNombre.Text = "Nombre";
+                txtNombre.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtApellidos_Enter(object sender, EventArgs e)
+        {
+            if (txtApellidos.Text == "Apellidos")
+            {
+                txtApellidos.Text = "";
+                txtApellidos.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtApellidos_Leave(object sender, EventArgs e)
+        {
+            if (txtApellidos.Text == "")
+            {
+                txtApellidos.Text = "Apellidos";
+                txtApellidos.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtDireccion_Enter(object sender, EventArgs e)
+        {
+            if (txtDireccion.Text == "Direccion")
+            {
+                txtDireccion.Text = "";
+                txtDireccion.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtDireccion_Leave(object sender, EventArgs e)
+        {
+            if (txtDireccion.Text == "")
+            {
+                txtDireccion.Text = "Direccion";
+                txtDireccion.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtTelefono_Enter(object sender, EventArgs e)
+        {
+            if (txtTelefono.Text == "Telefono")
+            {
+                txtTelefono.Text = "";
+                txtTelefono.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtTelefono_Leave(object sender, EventArgs e)
+        {
+            if (txtTelefono.Text == "")
+            {
+                txtTelefono.Text = "Telefono";
+                txtTelefono.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtNum_Documento_Enter(object sender, EventArgs e)
+        {
+            if (txtNum_Documento.Text == "txtNum_Documento")
+            {
+                txtNum_Documento.Text = "";
+                txtNum_Documento.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtNum_Documento_Leave(object sender, EventArgs e)
+        {
+            if (txtNum_Documento.Text == "")
+            {
+                txtNum_Documento.Text = "txtNum_Documento";
+                txtNum_Documento.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "Email")
+            {
+                txtEmail.Text = "";
+                txtEmail.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "")
+            {
+                txtEmail.Text = "Email";
+                txtEmail.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtBuscar_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == "Cliente a Buscar")
+            {
+                txtBuscar.Text = "";
+                txtBuscar.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtBuscar_Leave(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == "")
+            {
+                txtBuscar.Text = "Cliente a Buscar";
+                txtBuscar.ForeColor = Color.Gray;
+
+            }
         }
     }
 }

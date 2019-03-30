@@ -74,7 +74,7 @@ namespace CapaPresentacion
         //Limpiar todos los controles del formulario
         private void Limpiar()
         {
-            this.txtCodigo.Text = "Codigo Producto";
+            this.txtCodigo.Text = "Codigo de Barras";
             this.txtNombre.Text = "Nombre Producto";
             this.txtDescripcion.Text = "Descripcion";
             this.txtIdcategoria.Text = string.Empty;
@@ -196,7 +196,7 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtNombre.Text == string.Empty || this.txtIdcategoria.Text == string.Empty || this.txtCodigo.Text == string.Empty)
+                if (this.txtNombre.Text == "Nombre" || this.txtIdcategoria.Text == string.Empty || this.txtCodigo.Text == "Codigo de Barras")
                 {
                     MensajeError("Falta ingresar algunos datos, serán remarcados");
                     errorIcono.SetError(txtNombre, "Ingrese un Valor");

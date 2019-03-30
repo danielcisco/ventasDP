@@ -50,28 +50,30 @@ namespace CapaPresentacion
         //Limpiar todos los controles del formulario
         private void Limpiar()
         {
-            this.txtRazon_Social.Text = string.Empty;
-            this.txtNum_Documento.Text = string.Empty;
-            this.txtDireccion.Text = string.Empty;
-            this.txtTelefono.Text = string.Empty;
-            this.txtUrl.Text = string.Empty;
-            this.txtEmail.Text = string.Empty;
+            this.txtRazon_Social.Text = "Razon Social";
+            this.txtNum_Documento.Text = "Numero de Documento";
+            cbSector_Comercial.Text = "Sector Comercial";
+            this.txtDireccion.Text = "Direccion";
+            this.txtTelefono.Text = "Telefono";
+            this.txtUrl.Text = "Url";
+            this.txtEmail.Text = "Email";
             this.txtIdproveedor.Text = string.Empty;
+            this.gbtipo_documento.Enabled = false;
 
         }
 
         //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
-            this.txtRazon_Social.Enabled = !valor;
-            this.txtDireccion.Enabled = !valor;
+            this.txtRazon_Social.Enabled = valor;
+            this.txtDireccion.Enabled = valor;
             this.cbSector_Comercial.Enabled = valor;
-            this.cbTipo_Documento.Enabled = valor;
-            this.txtNum_Documento.Enabled = !valor;
-            this.txtTelefono.Enabled = !valor;
-            this.txtUrl.Enabled = !valor;
-            this.txtEmail.Enabled = !valor;
-            this.txtIdproveedor.Enabled = !valor;
+            this.gbtipo_documento.Enabled = valor;
+            this.txtNum_Documento.Enabled = valor;
+            this.txtTelefono.Enabled = valor;
+            this.txtUrl.Enabled = valor;
+            this.txtEmail.Enabled = valor;
+            this.txtIdproveedor.Enabled = valor;
         }
 
         //Habilitar los botones
@@ -211,7 +213,7 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.txtRazon_Social.Focus();
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -315,7 +317,27 @@ namespace CapaPresentacion
             this.txtIdproveedor.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idproveedor"].Value);
             this.txtRazon_Social.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["razon_social"].Value);
             this.cbSector_Comercial.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sector_comercial"].Value);
-            this.cbTipo_Documento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_documento"].Value);
+            // this.cbTipo_Documento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_documento"].Value);
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("C.I."))
+                rbCi.Checked = true;
+            else
+                rbCi.Checked = false;
+
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("Pasaporte"))
+                rbPasaporte.Checked = true;
+            else
+                rbPasaporte.Checked = false;
+
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("NIT"))
+                rbNit.Checked = true;
+            else
+                rbNit.Checked = false;
+
+            if (this.dataListado.CurrentRow.Cells["tipo_documento"].Value.Equals("Otro"))
+                rbOtro.Checked = true;
+            else
+                rbOtro.Checked = false;
+
             this.txtNum_Documento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["num_documento"].Value);
             this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["direccion"].Value);
             this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["telefono"].Value);
@@ -367,5 +389,133 @@ namespace CapaPresentacion
         {
             this.tipo_documento = "Otro";
         }
+
+        private void txtBuscar_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == "Proveedor a Buscar")
+            {
+                txtBuscar.Text = "";
+                txtBuscar.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtBuscar_Leave(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == "")
+            {
+                txtBuscar.Text = "Proveedor a Buscar";
+                txtBuscar.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtRazon_Social_Enter(object sender, EventArgs e)
+        {
+            if (txtRazon_Social.Text == "Razon Social")
+            {
+                txtRazon_Social.Text = "";
+                txtRazon_Social.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtRazon_Social_Leave(object sender, EventArgs e)
+        {
+            if (txtRazon_Social.Text == "")
+            {
+                txtRazon_Social.Text = "Razon Social";
+                txtRazon_Social.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtDireccion_Enter(object sender, EventArgs e)
+        {
+            if (txtDireccion.Text == "Direccion")
+            {
+                txtDireccion.Text = "";
+                txtDireccion.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtDireccion_Leave(object sender, EventArgs e)
+        {
+            if (txtDireccion.Text == "")
+            {
+                txtDireccion.Text = "Direccion";
+                txtDireccion.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtTelefono_Enter(object sender, EventArgs e)
+        {
+            if (txtTelefono.Text == "Telefono")
+            {
+                txtTelefono.Text = "";
+                txtTelefono.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtTelefono_Leave(object sender, EventArgs e)
+        {
+            if (txtTelefono.Text == "")
+            {
+                txtTelefono.Text = "Telefono";
+                txtTelefono.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "Email")
+            {
+                txtEmail.Text = "";
+                txtEmail.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "")
+            {
+                txtEmail.Text = "Email";
+                txtEmail.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtUrl_Enter(object sender, EventArgs e)
+        {
+            if (txtUrl.Text == "Url")
+            {
+                txtUrl.Text = "";
+                txtUrl.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtUrl_Leave(object sender, EventArgs e)
+        {
+            if (txtUrl.Text == "")
+            {
+                txtUrl.Text = "Url";
+                txtUrl.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtNum_Documento_Enter(object sender, EventArgs e)
+        {
+            if (txtNum_Documento.Text == "Numero de Documento")
+            {
+                txtNum_Documento.Text = "";
+                txtNum_Documento.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtNum_Documento_Leave(object sender, EventArgs e)
+        {
+            if (txtNum_Documento.Text == "")
+            {
+                txtNum_Documento.Text = "Numero de Documento";
+                txtNum_Documento.ForeColor = Color.LightGray;
+            }
+        }
+
+        
     }
 }

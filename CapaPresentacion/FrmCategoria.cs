@@ -149,7 +149,7 @@ namespace CapaPresentacion
             try
             {
                 string rpta="";
-                if (this.txtNombre.Text==string.Empty)
+                if (this.txtNombre.Text=="Nombre")
                 {
                     MensajeError("Falta ingresar algunos datos, serán remarcados");
                     errorIcono.SetError(txtNombre,"Ingrese un Nombre");
