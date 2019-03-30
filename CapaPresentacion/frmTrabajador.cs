@@ -7,17 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
+
 
 using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class frmTrabajador : Form
+    public partial class frmTrabajador : MaterialForm
     {
         //Variable que nos indica si vamos a insertar un nuevo producto
         private bool IsNuevo = false;
         //Variable que nos indica si vamos a modificar un producto
         private bool IsEditar = false;
+
+        private string sexo;
+        private string acceso;
 
         //Constructor del formulario
 
@@ -74,18 +80,20 @@ namespace CapaPresentacion
         //Habilita los controles de los formularios
         private void Habilitar(bool Valor)
         {
-            this.txtIdtrabajador.ReadOnly = !Valor;
-            this.txtNombre.ReadOnly = !Valor;
-            this.txtDireccion.ReadOnly = !Valor;
-            this.cbSexo.Enabled = Valor;
+            this.txtIdtrabajador.Enabled = Valor;
+            this.txtNombre.Enabled = Valor;
+            this.txtDireccion.Enabled = Valor;
+            // this.cbSexo.Enabled = Valor;
+            this.gbGenero.Enabled = Valor;
             this.dtFecha_Nacimiento.Enabled = Valor;
             this.txtNum_Documento.Enabled = Valor;
-            this.txtDireccion.ReadOnly = !Valor;
-            this.txtTelefono.ReadOnly = !Valor;
-            this.txtEmail.ReadOnly = !Valor;
-            this.cbAcceso.Enabled = Valor;
-            this.txtUsuario.ReadOnly = !Valor;
-            this.txtPassword.ReadOnly = !Valor;
+            this.txtDireccion.Enabled = Valor;
+            this.txtTelefono.Enabled = Valor;
+            this.txtEmail.Enabled = Valor;
+            //this.cbAcceso.Enabled = Valor;
+            this.lblFecha_Nac.Enabled = Valor;
+            this.gbLogin.Enabled = Valor;
+               
         }
         //Habilita los botones
         private void Botones()
@@ -134,11 +142,11 @@ namespace CapaPresentacion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (cbBuscar.Text.Equals("Apellidos"))
+            if (rbApellidos.Checked)
             {
                 this.BuscarApellidos();
             }
-            else if (cbBuscar.Text.Equals("Documento"))
+            else if (rbDocumento.Checked)
             {
                 this.BuscarNum_Documento();
             }
@@ -185,6 +193,7 @@ namespace CapaPresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            
             this.IsNuevo = true;
             this.IsEditar = false;
             this.Botones();
@@ -216,20 +225,20 @@ namespace CapaPresentacion
                     {
                         //Vamos a insertar un Trabajador 
                         Rpta = NTrabajador.Insertar(this.txtNombre.Text.Trim().ToUpper(),
-                        this.txtApellidos.Text.Trim().ToUpper(), cbSexo.Text,
+                        this.txtApellidos.Text.Trim().ToUpper(), this.sexo,
                         dtFecha_Nacimiento.Value,
                         txtNum_Documento.Text, txtDireccion.Text,
-                        txtTelefono.Text, txtEmail.Text, cbAcceso.Text, txtUsuario.Text, txtPassword.Text);
+                        txtTelefono.Text, txtEmail.Text, this.acceso, txtUsuario.Text, txtPassword.Text);
 
                     }
                     else
                     {
                         //Vamos a modificar un Trabajador
                         Rpta = NTrabajador.Editar(Convert.ToInt32(this.txtIdtrabajador.Text), this.txtNombre.Text.Trim().ToUpper(),
-                        this.txtApellidos.Text.Trim().ToUpper(), cbSexo.Text,
+                        this.txtApellidos.Text.Trim().ToUpper(), this.sexo,
                         dtFecha_Nacimiento.Value,
                         txtNum_Documento.Text, txtDireccion.Text,
-                        txtTelefono.Text, txtEmail.Text, cbAcceso.Text, txtUsuario.Text, txtPassword.Text);
+                        txtTelefono.Text, txtEmail.Text, this.acceso, txtUsuario.Text, txtPassword.Text);
                     }
                     //Si la respuesta fue OK, fue porque se modifico 
                     //o inserto el Cliente
@@ -298,13 +307,13 @@ namespace CapaPresentacion
             this.txtIdtrabajador.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idtrabajador"].Value);
             this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
             this.txtApellidos.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["apellidos"].Value);
-            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sexo"].Value);
+            //this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sexo"].Value);
             this.dtFecha_Nacimiento.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_nac"].Value);
             this.txtNum_Documento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["num_documento"].Value);
             this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["direccion"].Value);
             this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["telefono"].Value);
             this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["email"].Value);
-            this.cbAcceso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["acceso"].Value);
+          //  this.cbAcceso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["acceso"].Value);
             this.txtUsuario.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["usuario"].Value);
             this.txtPassword.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["password"].Value);
 
@@ -350,5 +359,38 @@ namespace CapaPresentacion
         {
             this.Close();
         }
+
+        private void btnback_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = tabPage3;
+            
+        }
+
+        private void rbFemenino_CheckedChanged(object sender, EventArgs e)
+        {
+            this.sexo = "F";
+        }
+
+        private void rbMasculino_CheckedChanged(object sender, EventArgs e)
+        {
+            this.sexo = "M";
+        }
+
+        private void rbAdministrador_CheckedChanged(object sender, EventArgs e)
+        {
+            this.acceso = "Administrador";
+        }
+
+        private void rbAlmacen_CheckedChanged(object sender, EventArgs e)
+        {
+            this.acceso = "Almacenero";
+        }
+
+        private void rbVenta_CheckedChanged(object sender, EventArgs e)
+        {
+            this.acceso = "Vendedor";
+        }
+
+        
     }
 }

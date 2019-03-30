@@ -351,7 +351,7 @@
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(103, 26);
             this.optionsToolStripMenuItem.Text = "&BD";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            
             // 
             // backUpBDToolStripMenuItem
             // 

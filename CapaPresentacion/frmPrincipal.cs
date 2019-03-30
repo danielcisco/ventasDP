@@ -106,15 +106,7 @@ namespace CapaPresentacion
             }
         }
 
-        private void almacenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
